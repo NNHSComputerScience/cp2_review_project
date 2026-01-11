@@ -24,7 +24,6 @@ total = 0.0
 choice = "A"
 # the name of your restaurant; rename it if you wish
 store_name = "Good Burger"
-user_inputs = []
 
 #####################################
 ###   MAIN  PROGRAM #################
@@ -33,102 +32,8 @@ print(f"Welcome to {store_name}, home of the Good Burger. Can I take your order?
 while choice != "z":
   print(menu)
   choice = input("Choose a menu option: ").lower()
-  user_inputs.append(choice)
   if choice == "b":
-    a = input("Make it a cheeseburger?(y/n) ").lower()
-    if a == 'y':
-      order.append("Cheeseburger")
-      total += 3.8
-    elif a == 'n':
-      order.append("Burger")
-      total += 3.30
-    else:
-      while True:
-        print("Please retry")
-        a = input("Make it a cheeseburger?(y/n) ").lower()
-        if a == 'y':
-          order.append("Cheeseburger")
-          total += 3.8
-          break
-        elif a == 'n':
-          order.append("Burger")
-          total += 3.30
-          break
-        else:
-          continue
-  elif choice == "f":
-    print('''
-    Pick a side!
-    1.\tFries
-    2.\tOnion Rings\n
-    ''')
-    a = int(input("Pick a number above for side: "))
-    if a == 1:
-      order.append("Fries")
-      total += 1
-    elif a == 2:
-      order.append("Onion Rings")
-      total += 1.5
-    else:
-      while True:
-        print("\nNot an option\n")
-        print('''
-        Pick a side!
-        1.\tFries
-        2.\tOnion Rings\n
-        ''')
-        a = int(input("Pick a number above for side: "))
-        if a == 1:
-          order.append("Fries")
-          total += 1
-          break
-        elif a == 2:
-          order.append("Onion Rings")
-          total += 1.5
-          break
-        else:
-          continue
-  elif choice == "s":
-    print('''
-    Pick a size!
-    1.\tSmall
-    2.\tMedium
-    3.\tLarge\n
-    ''')
-    a = int(input("Pick a number above for size: "))
-    if a == 1:
-      order.append("Small drink")
-      total += .5
-    elif a == 2:
-      order.append("Medium drink")
-      total += .75
-    elif a == 3:
-      order.append("Large drink")
-      total += 1
-    else:
-      while True:
-        print("Not an option!\n")
-        print('''
-        Pick a size!
-        1.\tSmall
-        2.\tMedium
-        3.\tLarge\n
-        ''')
-        a = int(input("Pick a number above for size: "))
-        if a == 1:
-          order.append("Small drink")
-          total += .5
-          break
-        elif a == 2:
-          order.append("Medium drink")
-          total += .75
-          break
-        elif a == 3:
-          order.append("Large drink")
-          total += 1
-          break
-        else:
-          continue
+    pass
   elif choice == "m":
     pass
   elif choice == "x":
