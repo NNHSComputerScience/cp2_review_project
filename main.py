@@ -24,7 +24,6 @@ total = 0.0
 choice = "A"
 # the name of your restaurant; rename it if you wish
 store_name = "Good Burger"
-user_inputs = []
 
 #####################################
 ###   MAIN  PROGRAM #################
@@ -33,102 +32,57 @@ print(f"Welcome to {store_name}, home of the Good Burger. Can I take your order?
 while choice != "z":
   print(menu)
   choice = input("Choose a menu option: ").lower()
-  user_inputs.append(choice)
-  if choice == "b":
-    a = input("Make it a cheeseburger?(y/n) ").lower()
-    if a == 'y':
-      order.append("Cheeseburger")
-      total += 3.8
-    elif a == 'n':
-      order.append("Burger")
-      total += 3.30
-    else:
-      while True:
-        print("Please retry")
-        a = input("Make it a cheeseburger?(y/n) ").lower()
-        if a == 'y':
-          order.append("Cheeseburger")
-          total += 3.8
-          break
-        elif a == 'n':
-          order.append("Burger")
-          total += 3.30
-          break
-        else:
-          continue
+  # Tyler Ke and Jayden Cheng
+  if choice == "b":  
+    while True:
+      choice = input("Would you like to make it a cheeseburger for +$0.50? (y/n) ")
+      if choice.lower() == "y":
+        print("Adding cheeseburger...")
+        order.append("cheeseburger")
+        total += 3.80
+        break
+      elif choice.lower() == "n":
+        print("Adding burger...")
+        order.append("burger")
+        total += 3.30
+        break
+      else:
+        input("\nInvalid input. Press enter to try again.")
   elif choice == "f":
-    print('''
-    Pick a side!
-    1.\tFries
-    2.\tOnion Rings\n
-    ''')
-    a = int(input("Pick a number above for side: "))
-    if a == 1:
-      order.append("Fries")
-      total += 1
-    elif a == 2:
-      order.append("Onion Rings")
-      total += 1.5
-    else:
-      while True:
-        print("\nNot an option\n")
-        print('''
-        Pick a side!
-        1.\tFries
-        2.\tOnion Rings\n
-        ''')
-        a = int(input("Pick a number above for side: "))
-        if a == 1:
-          order.append("Fries")
-          total += 1
-          break
-        elif a == 2:
-          order.append("Onion Rings")
-          total += 1.5
-          break
-        else:
-          continue
+    while True:
+      choice = input("Would you like to order onion rings ($1.50) or fries ($1.00)? (f/o) ")
+      if choice.lower() == "f":
+        print("Adding fries...")
+        order.append("fries")
+        total += 1.00
+        break
+      elif choice.lower() == "o":
+        print("Adding onion rings...")
+        order.append("onion rings")
+        total += 1.50
+        break
+      else:
+        input("\nInvalid input. Press enter to try again.")
   elif choice == "s":
-    print('''
-    Pick a size!
-    1.\tSmall
-    2.\tMedium
-    3.\tLarge\n
-    ''')
-    a = int(input("Pick a number above for size: "))
-    if a == 1:
-      order.append("Small drink")
-      total += .5
-    elif a == 2:
-      order.append("Medium drink")
-      total += .75
-    elif a == 3:
-      order.append("Large drink")
-      total += 1
-    else:
-      while True:
-        print("Not an option!\n")
-        print('''
-        Pick a size!
-        1.\tSmall
-        2.\tMedium
-        3.\tLarge\n
-        ''')
-        a = int(input("Pick a number above for size: "))
-        if a == 1:
-          order.append("Small drink")
-          total += .5
-          break
-        elif a == 2:
-          order.append("Medium drink")
-          total += .75
-          break
-        elif a == 3:
-          order.append("Large drink")
-          total += 1
-          break
-        else:
-          continue
+    while True:
+      choice = input("Would you like a small ($0.50), medium ($0.75), or large ($1.00)? (s/m/l) ")
+      if choice.lower() == "s":
+        print("Adding small drink...")
+        order.append("small drink")
+        total += 0.50
+        break
+      elif choice.lower() == "m":
+        print("Adding medium drink...")
+        order.append("medium drink")
+        total += 0.75
+        break
+      elif choice.lower() == "l":
+        print("Adding large drink...")
+        order.append("large drink")
+        total += 1.00
+        break
+      else:
+        input("\nInvalid input. Press enter to try again.")
   elif choice == "m":
     pass
   elif choice == "x":
