@@ -24,111 +24,70 @@ total = 0.0
 choice = "A"
 # the name of your restaurant; rename it if you wish
 store_name = "Good Burger"
-user_inputs = []
 
 #####################################
 ###   MAIN  PROGRAM #################
 #####################################
-print(f"Welcome to {store_name}, home of the Good Burger. Can I take your order?")
+print(
+  f"Welcome to {store_name}, home of the Good Burger. Can I take your order?")
 while choice != "z":
   print(menu)
   choice = input("Choose a menu option: ").lower()
-  user_inputs.append(choice)
+  # keanu and abe
   if choice == "b":
-    a = input("Make it a cheeseburger?(y/n) ").lower()
-    if a == 'y':
-      order.append("Cheeseburger")
-      total += 3.8
-    elif a == 'n':
-      order.append("Burger")
-      total += 3.30
-    else:
-      while True:
-        print("Please retry")
-        a = input("Make it a cheeseburger?(y/n) ").lower()
-        if a == 'y':
-          order.append("Cheeseburger")
-          total += 3.8
-          break
-        elif a == 'n':
-          order.append("Burger")
-          total += 3.30
-          break
-        else:
-          continue
+    total += 3.30
+    inputError = True
+    while (inputError == True):
+      cheeseChosen = input("Would that be a cheeseburger? (y/n)").lower()
+      if cheeseChosen == "y":
+        print("Cheeseburger selected.")
+        total += 0.50
+        inputError = False
+        order.append("Cheeseburger ($3.80)")
+      elif cheeseChosen == "n":
+        print("Regular Burger Selected")
+        inputError = False
+        order.append("Burger ($3.30)")
   elif choice == "f":
-    print('''
-    Pick a side!
-    1.\tFries
-    2.\tOnion Rings\n
-    ''')
-    a = int(input("Pick a number above for side: "))
-    if a == 1:
-      order.append("Fries")
-      total += 1
-    elif a == 2:
-      order.append("Onion Rings")
-      total += 1.5
-    else:
-      while True:
-        print("\nNot an option\n")
-        print('''
-        Pick a side!
-        1.\tFries
-        2.\tOnion Rings\n
-        ''')
-        a = int(input("Pick a number above for side: "))
-        if a == 1:
-          order.append("Fries")
-          total += 1
-          break
-        elif a == 2:
-          order.append("Onion Rings")
-          total += 1.5
-          break
-        else:
-          continue
+    inputError = True
+    while (inputError == True):
+      sideChoice = input("""
+        Would that be fries or a side?
+        F Fries (+$1.00)
+        OR Onion Rings (+$1.50)
+        """).lower()
+      if sideChoice == "f":
+        total += 1.00
+        order.append("Fries ($1.00)")
+        print("Fries Selected")
+        inputError = False
+      elif sideChoice == "or":
+        total += 1.50
+        order.append("Onion Rings ($1.50)")
+        print("Onion Rings Selected")
+        inputError = False
   elif choice == "s":
-    print('''
-    Pick a size!
-    1.\tSmall
-    2.\tMedium
-    3.\tLarge\n
-    ''')
-    a = int(input("Pick a number above for size: "))
-    if a == 1:
-      order.append("Small drink")
-      total += .5
-    elif a == 2:
-      order.append("Medium drink")
-      total += .75
-    elif a == 3:
-      order.append("Large drink")
-      total += 1
-    else:
-      while True:
-        print("Not an option!\n")
-        print('''
-        Pick a size!
-        1.\tSmall
-        2.\tMedium
-        3.\tLarge\n
-        ''')
-        a = int(input("Pick a number above for size: "))
-        if a == 1:
-          order.append("Small drink")
-          total += .5
-          break
-        elif a == 2:
-          order.append("Medium drink")
-          total += .75
-          break
-        elif a == 3:
-          order.append("Large drink")
-          total += 1
-          break
-        else:
-          continue
+    inputError = True
+    while (inputError == True):
+      sizeDrinkChoice = input("""
+        L Large Drink (+$1)
+        M Medium Drink (+$0.75)
+        S Small Drink (+$0.5)""").lower()
+      if sizeDrinkChoice == "l":
+        total += 1.00
+        order.append("Large Drink ($1.00)")
+        print("Large Drink Selected")
+        inputError = False
+      elif sizeDrinkChoice == "m":
+        total += 0.75
+        print("Medium Drink Selected")
+        order.append("Medium Drink ($0.75)")
+        inputError = False
+      elif sizeDrinkChoice == "s":
+        total += 0.5
+        print("Small Drink Selected")
+        order.append("Large Drink ($1.00)")
+        inputError = False
   elif choice == "m":
     pass
   elif choice == "x":
