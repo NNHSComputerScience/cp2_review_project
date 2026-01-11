@@ -34,6 +34,7 @@ while choice != "z":
   print(menu)
   choice = input("Choose a menu option: ").lower()
   user_inputs.append(choice)
+  # Devin & Evren
   if choice == "b":
     a = input("Make it a cheeseburger?(y/n) ").lower()
     if a == 'y':
