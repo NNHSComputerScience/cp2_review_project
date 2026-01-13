@@ -86,13 +86,23 @@ while choice != "z":
   elif choice == "m":
     pass
   elif choice == "x":
-    pass
+    if len(order) > 0:
+      removed_item = order.pop() # removes last item
+      total -= removed_item[1] # subtracts its price
+      print(f"\nRemoved {removed_item[0]} from your order.")
+    else:
+      print("\nThere is no item to remove.")
   elif choice == "e":
     pass
   elif choice == "c":
-    pass
+    clear_order = input("Are you sure you want to clear your order?")
+    if clear_order == "yes":
+      order = []
+      total = 0.0
+    else:
+      pass
   elif choice == "d":
-    pass
+    print("\nYour order is", order, "\nYour total is", total)
   elif choice == "r":
     pass
   elif choice == "z":
