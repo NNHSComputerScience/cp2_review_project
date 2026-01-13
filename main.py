@@ -16,6 +16,7 @@ MENU:   B Burger, $3.30+        E End Order
 """
 # a list of items in current customer's order; should be cleared after each completed order
 order = []
+order_prices = []
 # 2D(nested) list of all customer orders; add completed customer order lists to this list
 all_orders = []
 # float value with current customer's order total
@@ -29,7 +30,8 @@ user_inputs = []
 #####################################
 ###   MAIN  PROGRAM #################
 #####################################
-print(f"Welcome to {store_name}, home of the Good Burger. Can I take your order?")
+print(
+    f"Welcome to {store_name}, home of the Good Burger. Can I take your order?")
 while choice != "z":
   print(menu)
   choice = input("Choose a menu option: ").lower()
@@ -39,9 +41,11 @@ while choice != "z":
     a = input("Make it a cheeseburger?(y/n) ").lower()
     if a == 'y':
       order.append("Cheeseburger")
+      order_prices.append(3.8)
       total += 3.8
     elif a == 'n':
       order.append("Burger")
+      order_prices.append(3.30)
       total += 3.30
     else:
       while True:
@@ -49,10 +53,12 @@ while choice != "z":
         a = input("Make it a cheeseburger?(y/n) ").lower()
         if a == 'y':
           order.append("Cheeseburger")
+          order_prices.append(3.8)
           total += 3.8
           break
         elif a == 'n':
           order.append("Burger")
+          order_prices.append(3.30)
           total += 3.30
           break
         else:
@@ -66,9 +72,11 @@ while choice != "z":
     a = int(input("Pick a number above for side: "))
     if a == 1:
       order.append("Fries")
+      order_prices.append(1)
       total += 1
     elif a == 2:
       order.append("Onion Rings")
+      order_prices.append(1.5)
       total += 1.5
     else:
       while True:
@@ -81,10 +89,12 @@ while choice != "z":
         a = int(input("Pick a number above for side: "))
         if a == 1:
           order.append("Fries")
+          order_prices.append(1)
           total += 1
           break
         elif a == 2:
           order.append("Onion Rings")
+          order_prices.append(1.5)
           total += 1.5
           break
         else:
@@ -99,12 +109,15 @@ while choice != "z":
     a = int(input("Pick a number above for size: "))
     if a == 1:
       order.append("Small drink")
+      order_prices.append(0.5)
       total += .5
     elif a == 2:
       order.append("Medium drink")
+      order_prices.append(0.75)
       total += .75
     elif a == 3:
       order.append("Large drink")
+      order_prices.append(1)
       total += 1
     else:
       while True:
@@ -118,28 +131,44 @@ while choice != "z":
         a = int(input("Pick a number above for size: "))
         if a == 1:
           order.append("Small drink")
+          order_prices.append(0.5)
           total += .5
           break
         elif a == 2:
           order.append("Medium drink")
+          order_prices.append(0.75)
           total += .75
           break
         elif a == 3:
           order.append("Large drink")
+          order_prices.append(1)
           total += 1
           break
         else:
           continue
   elif choice == "m":
-    pass
+    if "Burger" in order or "Cheeseburger" in order:
+      if "Onion Rings" in order or "Fries" in order:
+        if "Small drink" in order or "Medium drink" in order or "Large drink" in order:
+          print("Value meal applied! 20% discount!")
+          # add discount to order_prices list
   elif choice == "x":
-    pass
+    order.pop()
+    order_prices.pop()
+    print("Your last item has been deleted")
   elif choice == "e":
     pass
   elif choice == "c":
-    pass
+    order.clear()
+    order_prices.clear()
+    print("Your order has been cleared")
+    total = 0.0
   elif choice == "d":
-    pass
+    print(order)
+    total = 0
+    for i in order_prices:
+      total += i
+    print(total)
   elif choice == "r":
     pass
   elif choice == "z":
