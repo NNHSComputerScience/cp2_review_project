@@ -156,8 +156,27 @@ while choice != "z":
     order.pop()
     order_prices.pop()
     print("Your last item has been deleted")
+  # Neha & Adiah
   elif choice == "e":
-    pass
+    print("\nSubtotal: $" , round(total,2))
+    tax = total * 0.05
+    print("\nTax: $" , round(tax,2))
+    total += tax
+    print("\nTotal: $" , round(total,2))
+
+    money = int(input("Enter the amount collected: "))
+    if money == total or money > total:
+      returned = total - money
+      print("Change returned: $" , round(returned,2))
+    elif money < total:
+      print("Insufficient amount of money.")
+      needed = total - money
+      print("You still need to pay ", needed)
+      money= int(input("Enter the new amount to be collected: "))
+      returned = total - money
+      print("Change returned: $" , round(returned,2))
+    all_orders.append(order.copy())
+    order.clear()
   elif choice == "c":
     order.clear()
     order_prices.clear()
