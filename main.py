@@ -16,6 +16,7 @@ MENU:   B Burger, $3.30+        E End Order
 """
 # a list of items in current customer's order; should be cleared after each completed order
 order = []
+costs = []
 # 2D(nested) list of all customer orders; add completed customer order lists to this list
 all_orders = []
 # float value with current customer's order total
@@ -90,14 +91,38 @@ while choice != "z":
         inputError = False
   elif choice == "m":
     pass
+  # Robbie and Abdullah
   elif choice == "x":
-    pass
+    selection = input("\n\nType the menu item you would like to remove an item from your order, or press enter to remove the last selected item: ").title()
+    if selection == "":
+      itemToRemove = order.pop()
+      total -= costs.pop()
+      print(f"\n{itemToRemove} has been removed from your order. Your total is ${total}.\n\n")
+    elif selection != "" and selection in order:
+      index = order.index(selection)
+      itemToRemove = order.pop(index)
+      total -= costs.pop(index)
+      print(f"\n{itemToRemove} has been removed from your order. Your total is ${total}.\n\n")
+    else:
+      print("That's not a valid input.\n")
   elif choice == "e":
     pass
   elif choice == "c":
-    pass
+    selection = ""
+    while selection != "y" and selection != "n":
+      selection = input("\nAre you sure you want to clear your order? (Y/N): ").lower()
+      if selection == "y":
+        order.clear()
+        print("\nOrder cleared!\n\n")
+      elif selection == "n":
+        print("\nCancelled.\n\n")
+      else:
+        print("\nThat's not a valid input.")
   elif choice == "d":
-    pass
+    print("\nCurrent order:\n")
+    for listItem in order:
+      print("\t-" + listItem)
+    print(f"\nYour total cost thus far is ${total}\n")
   elif choice == "r":
     pass
   elif choice == "z":
