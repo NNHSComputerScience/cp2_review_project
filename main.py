@@ -93,7 +93,25 @@ while choice != "z":
     else:
       print("\nThere is no item to remove.")
   elif choice == "e":
-    pass
+    final_total = total * 1.05
+    tax = final_total - total
+    print("Subtotal: $" + str(round(total, 2)))
+    print("Tax: $" + str(round(tax, 2)))
+    print("Total cost: $" + str(round(final_total, 2)))
+
+    tendered = float(input("Enter amount tendered: $"))
+
+    while tendered < final_total:
+      print("Insufficient amount. Please re-enter: ")
+      tendered = float(input("Enter amount tendered: $"))
+
+    change = tendered - final_total
+
+    print("Change: $" + str(round(change, 2)))
+    all_orders.append(order)
+    order = [] 
+    total = 0.0
+    
   elif choice == "c":
     clear_order = input("Are you sure you want to clear your order?")
     if clear_order == "yes":
